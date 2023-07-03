@@ -203,12 +203,10 @@ def predict_multiple():
                                  any_message_multi=msg)
 
 
+main_cols = joblib.load("./pickles/data_columns.pkl")
+clf = joblib.load("./pickles/classifier_model.pkl")
+scaler = joblib.load("./pickles/std_scaler.pkl")
+drop_columns = joblib.load("./pickles/drop_columns.pkl")
+drop_columns.remove('id')
 
-if __name__ == '__main__':
-    main_cols = joblib.load("./pickles/data_columns.pkl")
-    clf = joblib.load("./pickles/classifier_model.pkl")
-    scaler = joblib.load("./pickles/std_scaler.pkl")
-    drop_columns = joblib.load("./pickles/drop_columns.pkl")
-    drop_columns.remove('id')
-    
-    app.run(host='0.0.0.0', port=8080)
+app.run(host='0.0.0.0', port=8080)
